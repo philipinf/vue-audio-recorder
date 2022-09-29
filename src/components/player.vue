@@ -69,6 +69,7 @@
 
 <template>
   <div class="ar-player">
+    Sicker player jo
     <div class="ar-player-actions">
       <icon-button
         id="play"
@@ -105,29 +106,29 @@ export default {
   props: {
     src: { type: String },
     record: { type: Object },
-    filename: { type: String }
+    filename: { type: String },
   },
   data() {
     return {
       isPlaying: false,
       duration: convertTimeMMSS(0),
       playedTime: convertTimeMMSS(0),
-      progress: 0
+      progress: 0,
     };
   },
   components: {
     IconButton,
     LineControl,
-    VolumeControl
+    VolumeControl,
   },
-  mounted: function() {
+  mounted: function () {
     this.player = document.getElementById(this.playerUniqId);
 
     this.player.addEventListener("ended", () => {
       this.isPlaying = false;
     });
 
-    this.player.addEventListener("loadeddata", ev => {
+    this.player.addEventListener("loadeddata", (ev) => {
       this._resetProgress();
       this.duration = convertTimeMMSS(this.player.duration);
     });
@@ -152,7 +153,7 @@ export default {
     },
     playerUniqId() {
       return `audio-player${this._uid}`;
-    }
+    },
   },
   methods: {
     playback() {
@@ -193,7 +194,7 @@ export default {
       if (val) {
         this.player.volume = val;
       }
-    }
-  }
+    },
+  },
 };
 </script>
